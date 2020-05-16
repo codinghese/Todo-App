@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron" align="center">
+  <h1 class="display-4">ToDo App</h1>
+  
+  <hr class="my-4">
+  <p>Keep track of all your activities.</p>
+
+  <form action="additem" method="POST">
+  	 <div class="input-group mb-3">
+  <input type="text" class="form-control"  name="text" placeholder="Add Item" aria-label="Recipient's username" aria-describedby="button-addon2">
+
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="submit" >Add </button>
+  </div>
+</div>
+  </form>
+ 
+</div>
+
+<ul class="list-group">
+
+ {% for row in data %}
+	<form action="deleteitem" method="POST">
+		<li class="list-group-item" ><textarea class="form-control"  value={{row[1]}} name="rowid"  aria-label="Recipient's username" aria-describedby="button-addon2"  readonly>{{row[1]}}</textarea> </li>
+  <div align="center">
+  <button class="btn btn-outline-secondary" type="submit" >Delete </button>
+  </div>
+	</form>
+  
+
+{% endfor %}
+  
+</ul>
+
+{% endblock %}
